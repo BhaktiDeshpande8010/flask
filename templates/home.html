@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{url_for ('static',filename='home.css')}}"/>
+
+    <script src="{{url_for('static',filename='home.js')}}"></script>
+
 </head>
 <body>
-    {% include 'navbar.html '%}
-    <h1>This is Home Page</h1>
+    <!-- {% include 'navbar.html '%} -->
+    <h1 style="color: plum;">This is Home Page</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, mollitia!</p>
+
+    <button onclick="myclick()">click</button>
+
+    <!-- <img src="{{ url_for('static', filename='images/temp.png') }}" alt="temp"> -->
+    <img src="{{ url_for('static', filename='images/temp.png') }}" alt="temp" height="40%" width="30%">
 </body>
 </html>
