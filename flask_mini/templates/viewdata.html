@@ -20,6 +20,7 @@
             <th>Email</th>
             <th>Password</th>
             <th>Contact</th>
+            <th>Action</th>
         </tr>
 
         {% for i in s_data %}
@@ -29,6 +30,9 @@
             <td>{{i[2]}}</td>
             <td>{{i[3]}}</td>
             <td>{{i[4]}}</td>
+            <td>
+                <a href="deletestudent/{{i[0]}}" class="btn btn-danger" onclick="confirm('Are you sure')">Delete</a>
+            </td>
         </tr>
         {% endfor %}
 

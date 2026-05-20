@@ -53,6 +53,18 @@ def viewdata():
     con.close()
     return render_template("viewdata.html",s_data=data)  #this data is like an variable the entire data from db is going to get store in it 
                                                         #and the s_data is also an variable which we will use in html page,so that data will be visible there
+                                          
+
+@app.route("/deletestudent/<int:id>")
+def deletestudent(id):
+    con=sq.connect("Flask.db")
+    cur=con.cursor()
+    cur.execute("delete from registration where id=?",[id])
+    data=cur.fetchall()
+
+    con.commit()
+    con.close()
+    return redirect(url_for("viewdata"))
 
 
 if __name__=="__main__":
