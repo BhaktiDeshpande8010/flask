@@ -13,7 +13,7 @@
     {% include 'navbar.html' %}
     <h1>Registraion student page</h1>
 
-    <table>
+    <table class="table table-bordered table-striped">
         <tr>
             <th>ID</th>
             <th>Fullname</th>
@@ -22,7 +22,16 @@
             <th>Contact</th>
         </tr>
 
-        {% s_data%}
+        {% for i in s_data %}
+        <tr>
+            <td>{{i[0]}}</td>
+            <td>{{i[1]}}</td>
+            <td>{{i[2]}}</td>
+            <td>{{i[3]}}</td>
+            <td>{{i[4]}}</td>
+        </tr>
+        {% endfor %}
+
     </table>
 </body>
 

@@ -46,7 +46,7 @@ def saveform():
 def viewdata():
     con=sq.connect("Flask.db")
     cur=con.cursor()
-    cur.execute("Select * from registration")
+    cur.execute("Select * from registration order by id desc")
     data=cur.fetchall()
 
     con.commit()
