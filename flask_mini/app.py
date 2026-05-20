@@ -1,3 +1,5 @@
+import sqlite3 as sq
+
 from flask import *               
 app=Flask(__name__)                              
 
@@ -23,7 +25,6 @@ def saveform():
         ps = request.form["password"]
         cn = request.form["contact"]
 
-        import sqlite3 as sq
 
         con = sq.connect("Flask.db")
         cur = con.cursor()
@@ -39,6 +40,20 @@ def saveform():
 
     else:
         return "failed"
+    
+
+@app.route("/viewdata")
+def viewdata():
+    con=sq.connect("Flask.db")
+    cur=con.cursor()
+    cur.execute("Select * from registration")
+    data=cur.fetchall()
+
+    con.commit()
+    con.close()
+    return render_template("viewdata.html",s_data=data)  #this data is like an variable the entire data from db is going to get store in it 
+                                                        #and the s_data is also an variable which we will use in html page,so that data will be visible there
+
 
 if __name__=="__main__":
     app.run(debug=True)
