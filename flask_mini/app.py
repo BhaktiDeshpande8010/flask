@@ -67,6 +67,59 @@ def deletestudent(id):
     return redirect(url_for("viewdata"))
 
 
+@app.route("/updatestudent/<int:id>")
+def updatestudent(id):
+    con=sq.connect("Flask.db")
+    cur=con.cursor()
+    cur.execute("select * from registration where id=?", [id])
+    data = cur.fetchone()
+    
+    con.commit()
+    con.close()
+    return render_template("update.html",data=data)
+
+
+# @app.route("/profileupdate",methods=["POST","GET"])
+# def profileupdate():
+#     if request.method=="POST":
+#         nm = request.form["name"]
+#         em = request.form["email"]
+#         ps = request.form["password"]
+#         cn = request.form["contact"]
+        
+#         con = sq.connect("Flask.db")
+#         cur = con.cursor()
+#         cur.execute("update registration set name=?,email=?,password=?,contact=? where id=?",(nm,em,ps,cn,id))
+        
+#         con.commit()
+#         con.close()
+        
+#         return redirect("viewdata.html")
+
+@app.route("/profileupdate", methods=["POST", "GET"])
+def profileupdate():
+    if request.method == "POST":
+
+        id = request.form["id"]   # get hidden id field
+        nm = request.form["name"]
+        em = request.form["email"]
+        ps = request.form["password"]
+        cn = request.form["contact"]
+
+        con = sq.connect("Flask.db")
+        cur = con.cursor()
+
+        cur.execute(
+            "update registration set name=?, email=?, password=?, contact=? where id=?",
+            (nm, em, ps, cn, id)
+        )
+
+        con.commit()
+        con.close()
+
+        return redirect(url_for("viewdata"))
+        
+        
 
 if __name__=="__main__":
     app.run(debug=True)

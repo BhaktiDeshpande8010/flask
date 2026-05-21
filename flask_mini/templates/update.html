@@ -11,21 +11,23 @@
 
 <body>
     {% include 'navbar.html' %}
-    <center>
-        <form action="saveform" method="POST">
-            <fieldset style="width: 50%;">
-                <h1>Upadate form</h1>
-                <input type="text" placeholder="Enter Your Fullname" name="name">
+
+    <form action="{{ url_for('profileupdate') }}" method="POST">
+        <fieldset style="width: 50%;">
+            <h1>Upadate form</h1>
+            <center>
+                <input type="hidden" name="id" value="{{data[0]}}">
+                <input type="text" placeholder="Enter Your Fullname" name="name" value="{{data[1]}}">
                 <br><br>
-                <input type="email" placeholder="Enter Email" name="email">
+                <input type="email" placeholder="Enter Email" name="email" value="{{data[2]}}">
                 <br><br>
-                <input type="password" placeholder="Enter your password" name="password">
+                <input type="password" placeholder="Enter your password" name="password" value="{{data[3]}}">
                 <br><br>
-                <input type="tel" placeholder="Contact Number" name="contact">
+                <input type="tel" placeholder="Contact Number" name="contact" value="{{data[4]}}">
                 <br> <br>
                 <button type="submit" class="btn btn-primary">Update</button>
-            </fieldset>
-        </form>
+        </fieldset>
+    </form>
     </center>
 </body>
 
