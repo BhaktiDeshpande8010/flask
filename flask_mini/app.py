@@ -67,6 +67,7 @@ def deletestudent(id):
     return redirect(url_for("viewdata"))
 
 
+
 if __name__=="__main__":
     app.run(debug=True)
 
