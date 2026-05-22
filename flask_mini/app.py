@@ -131,7 +131,7 @@ def logincheck():
             # return "login failed"
             return "<script>window.alert('login failed');window.location.href='/login';</script> "
             
-    con.commit()    
+    con.commit()
     con.close()
     
     
