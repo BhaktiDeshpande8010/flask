@@ -46,7 +46,7 @@ def saveform():
 def viewdata():
     con=sq.connect("Flask.db")
     cur=con.cursor()
-    cur.execute("Select * from registration order by id desc")
+    cur.execute("Select * from registration order by id desc")    #order by id desc gives record in DESC order the latest one will be first
     data=cur.fetchall()
 
     con.commit()
@@ -79,22 +79,6 @@ def updatestudent(id):
     return render_template("update.html",data=data)
 
 
-# @app.route("/profileupdate",methods=["POST","GET"])
-# def profileupdate():
-#     if request.method=="POST":
-#         nm = request.form["name"]
-#         em = request.form["email"]
-#         ps = request.form["password"]
-#         cn = request.form["contact"]
-        
-#         con = sq.connect("Flask.db")
-#         cur = con.cursor()
-#         cur.execute("update registration set name=?,email=?,password=?,contact=? where id=?",(nm,em,ps,cn,id))
-        
-#         con.commit()
-#         con.close()
-        
-#         return redirect("viewdata.html")
 
 @app.route("/profileupdate", methods=["POST", "GET"])
 def profileupdate():
@@ -109,17 +93,55 @@ def profileupdate():
         con = sq.connect("Flask.db")
         cur = con.cursor()
 
-        cur.execute(
-            "update registration set name=?, email=?, password=?, contact=? where id=?",
-            (nm, em, ps, cn, id)
-        )
+        cur.execute("update registration set name=?, email=?, password=?, contact=? where id=?",(nm, em, ps, cn, id))
 
         con.commit()
         con.close()
-
         return redirect(url_for("viewdata"))
+
+
+
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
         
+
+@app.route("/login")
+def login():
+    
+    return render_template("login.html")
+
+@app.route("/logincheck", methods=["POST","GET"])
+def logincheck():
+    if request.method == "POST":
         
+        em = request.form["email"]
+        ps = request.form["password"]
+
+        con = sq.connect("Flask.db")
+        cur = con.cursor()
+
+        cur.execute("select * from registration where email=? and password=?",[em,ps])
+        data=cur.fetchall()
+        
+        if data:
+            # return render_template("dashboard.html")
+            return "<script>window.alert('login successfully');window.location.href='/dashboard';</script>"
+        else:
+            # return "login failed"
+            return "<script>window.alert('login failed');window.location.href='/login';</script> "
+            
+    con.commit()    
+    con.close()
+    
+    
+@app.route("/logout")
+def logout():
+    
+    return redirect("/login")
+
+
+
 
 if __name__=="__main__":
     app.run(debug=True)

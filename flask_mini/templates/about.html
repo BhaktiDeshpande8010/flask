@@ -4,14 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>About</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .about-section {
+            margin-top: 80px;
+        }
+
+        .about-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
 </head>
 
 <body>
+
     {% include 'navbar.html' %}
-    <h1>this is about page</h1>
+
+    <div class="container about-section">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-8">
+
+                <div class="about-card">
+
+                    <h1 class="text-center mb-4"> About Student Management System</h1>
+
+                    <p class="lead text-center"> This project is developed using Flask, SQLite, HTML,CSS and Bootstrap.</p>
+
+                    <hr>
+                    <p>The Student Management System helps users to:</p>
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item">
+                            Add Student Records
+                        </li>
+
+                        <li class="list-group-item">
+                            View Student Details
+                        </li>
+
+                        <li class="list-group-item">
+                            Update Student Information
+                        </li>
+
+                        <li class="list-group-item">
+                            Delete Student Records
+                        </li>
+
+                        <li class="list-group-item">
+                            Login and Logout Functionality
+                        </li>
+
+                    </ul>
+
+                    <div class="text-center mt-4">
+
+                        <a href="/register" class="btn btn-dark">
+                            Register Student
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
