@@ -125,12 +125,12 @@ def logincheck():
         data=cur.fetchall()
         
         if data:
-            # return render_template("dashboard.html")
+            # return render_template("dashboard.html")  # this will also work
             return "<script>window.alert('login successfully');window.location.href='/dashboard';</script>"
         else:
             # return "login failed"
-            return "<script>window.alert('login failed');window.location.href='/login';</script> "
-            
+            return "<script>window.alert('login failed');window.location.href='/login';</script>" # this is like we give an alert sort of an
+                                                                                                  # msg in befor navigating
     con.commit()
     con.close()
     
@@ -139,8 +139,6 @@ def logincheck():
 def logout():
     
     return redirect("/login")
-
-
 
 
 if __name__=="__main__":
