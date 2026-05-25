@@ -1,7 +1,9 @@
 import sqlite3 as sq
 
 from flask import *               
-app=Flask(__name__)                              
+app=Flask(__name__)    
+
+app.secret_key = "bwcbj"                      
 
 @app.route("/")
 def home():
@@ -98,12 +100,6 @@ def profileupdate():
         con.commit()
         con.close()
         return redirect(url_for("viewdata"))
-
-
-
-@app.route("/dashboard")
-def dashboard():
-    return render_template("dashboard.html")
         
 
 @app.route("/login")
@@ -125,6 +121,8 @@ def logincheck():
         data=cur.fetchall()
         
         if data:
+            session["username"]=em          #session start
+        
             # return render_template("dashboard.html")  # this will also work
             return "<script>window.alert('login successfully');window.location.href='/dashboard';</script>"
         else:
@@ -136,11 +134,25 @@ def logincheck():
     con.close()
     
     
+@app.route("/dashboard")
+def dashboard():
+    if session.get("username") is not None:
+        email=session.get('username')
+        con = sq.connect("Flask.db")
+        cur = con.cursor()
+        
+        cur.execute("select * from registration where email=?",[(email)])
+        data=cur.fetchall()
+        
+
+    return render_template("dashboard.html", data=data)
+
+
+
 @app.route("/logout")
 def logout():
-    
-    return redirect("/login")
-
+    session.pop("username",None)
+    return redirect(url_for("login"))
 
 if __name__=="__main__":
     app.run(debug=True)
