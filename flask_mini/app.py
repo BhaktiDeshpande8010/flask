@@ -142,10 +142,29 @@ def dashboard():
         cur = con.cursor()
         
         cur.execute("select * from registration where email=?",[(email)])
-        data=cur.fetchall()
+        data=cur.fetchone()
         
 
     return render_template("dashboard.html", data=data)
+
+
+
+@app.route("/fileupload")
+def fileupload():
+    return render_template("file_upload.html")
+
+
+@app.route("/filecheck", methods=["POST","GET"])
+def filecheck():
+    if request.method=="POST":
+        ph=request.files["photo"]
+        
+        ph.save(ph.filename)
+        return "upload successfully"
+    
+    else:
+        return "failed"
+    
 
 
 

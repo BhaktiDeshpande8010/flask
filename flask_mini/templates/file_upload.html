@@ -29,26 +29,25 @@
 
     {% include 'navbar.html' %}
 
+    <form action=""></form>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="register-card">
 
-                    <h2 class="text-center mb-4"> Login Form</h2>
+                    <h2 class="text-center mb-4"> Document-Upload</h2>
 
-                    <form action="logincheck" method="POST">
+                    <form action="filecheck" method="POST" enctype="multipart/form-data">
 
                         <div class="mb-3">
                             <input type="email" class="form-control" placeholder="Enter Email" name="email">
                         </div>
 
                         <div class="mb-3">
-                            <input type="password" class="form-control" placeholder="Enter Password" name="password">
+                            <input type="file" class="form-control" placeholder="Upload sign" name="photo">
                         </div>
 
-                        <button type="submit" class="btn btn-dark w-100">
-                            Register Student
-                        </button>
+                        <button type="submit" class="btn btn-dark w-100">Upload</button>
 
                     </form>
                 </div>
