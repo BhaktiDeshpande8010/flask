@@ -3,7 +3,7 @@ import sqlite3 as sq
 from flask import *               
 app=Flask(__name__)    
 
-app.secret_key = "bwcbj"                      
+app.secret_key = "bwcbj"                             #secret_key              
 
 @app.route("/")
 def home():
