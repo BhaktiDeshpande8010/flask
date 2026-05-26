@@ -161,4 +161,5 @@ m=15
 for i in range(1,11,2):
     print(m ,"x",i,"=",i*1)
 
+print("-------------")
 
