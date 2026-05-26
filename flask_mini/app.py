@@ -1,11 +1,11 @@
-import sqlite3 as sq
+import sqlite3 as sq                              #used for making connection with DB
 
 from flask import *               
 app=Flask(__name__)    
 
-app.secret_key = "bwcbj"                             #secret_key              
+app.secret_key = "bwcbj"                            #secret_key for flask syntax to work we made it at while dasboard coding          
 
-@app.route("/")
+@app.route("/") 
 def home():
     return render_template("home.html")
 
@@ -19,6 +19,8 @@ def register():
 def service():
     return render_template("about.html")
 
+
+# saving the data from registration form to DB
 @app.route("/saveform", methods=["POST", "GET"])
 def saveform():
     if request.method == "POST":
@@ -48,13 +50,14 @@ def saveform():
 def viewdata():
     con=sq.connect("Flask.db")
     cur=con.cursor()
-    cur.execute("Select * from registration order by id desc")    #order by id desc gives record in DESC order the latest one will be first
+    cur.execute("Select * from registration order by id desc") #order by id desc gives record in DESC order the latest one will be first
     data=cur.fetchall()
 
     con.commit()
     con.close()
     return render_template("viewdata.html",s_data=data)  #this data is like an variable the entire data from db is going to get store in it 
                                                         #and the s_data is also an variable which we will use in html page,so that data will be visible there
+               
                                           
 
 @app.route("/deletestudent/<int:id>")
@@ -67,6 +70,7 @@ def deletestudent(id):
     con.commit()
     con.close()
     return redirect(url_for("viewdata"))
+
 
 
 @app.route("/updatestudent/<int:id>")

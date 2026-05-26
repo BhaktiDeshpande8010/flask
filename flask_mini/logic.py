@@ -110,3 +110,55 @@
 #     print("Not eligible")
     
 # print("End of the program")
+
+
+# # find largest 
+# a =int(input("Enter a number"))
+# b =int(input("Enter a number"))
+
+# if (a>b) :
+#     print("The greater number is", a )
+    
+# else:
+#     print("The greater number is", b)
+    
+    
+# #negative no
+# num =int(input("Enter a Number :"))
+ 
+# if num > 0:
+#     print("positive number")
+ 
+# elif num == 0:
+#     print("Its an zero")
+    
+# else:
+#     print("Negative number")
+
+
+# i = int(input("Enter a number"))
+# # i=5
+# for i  in range(1 , i+1 ):
+#     print(i)
+    
+    
+# a = 5
+# total = 0
+
+# for i in range(1, a + 1):
+#     total = total + i
+
+# print("Sum of the numbers:", total)
+
+
+# Multiplication Table
+n=3
+for i in range (1,11):
+    print(n, "x" ,i ,"=", i*1)
+print("-----------")
+
+m=15
+for i in range(1,11,2):
+    print(m ,"x",i,"=",i*1)
+
+
