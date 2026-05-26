@@ -20,6 +20,24 @@
 
     <!-- <img src="{{ url_for('static', filename='images/temp.png') }}" alt="temp"> -->
     <img src="{{ url_for('static', filename='images/temp.png') }}" alt="temp">
+
+
+    <!-- {{s_list}} -->
+
+    <table border="1">
+        <tr>
+            <td>id</td>
+            <td>contact</td>
+        </tr>
+
+        {% for i, j in s_list.items() %}
+        <tr>
+            <td>{{ i }}</td>
+            <td>{{ j }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
 </body>
 
 </html>
