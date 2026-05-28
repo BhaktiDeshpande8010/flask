@@ -152,14 +152,40 @@
 
 
 # Multiplication Table
-n=3
-for i in range (1,11):
-    print(n, "x" ,i ,"=", i*1)
-print("-----------")
+# n=3
+# for i in range (1,11):
+#     print(n, "x" ,i ,"=", i*1)
+# print("-----------")
 
-m=15
-for i in range(1,11,2):
-    print(m ,"x",i,"=",i*1)
+# m=15
+# for i in range(1,11,2):
+#     print(m ,"x",i,"=",i*1)
 
-print("-------------")
+# print("-------------")
 
+# age=19
+# if(age >= 18):
+#     print("yes")
+
+# else:
+#     print("no")
+    
+    
+# find greatest of 4 numbers given by user
+
+a1 = int(input("Enter number 1 : "))
+a2 = int(input("Enter number 2 : "))
+a3 = int(input("Enter number 3 : "))
+a4 = int(input("Enter number 4 : "))
+
+if(a1 >= a2 and a1 >= a3 and a1 >= a4):
+    print("a1 is greatest :", a1)
+
+elif(a2 >= a1 and a2 >= a3 and a2 >= a4):
+    print("a2 is greatest :", a2)
+
+elif(a3 >= a1 and a3 >= a2 and a3 >= a4):
+    print("a3 is greatest :", a3)
+
+else:
+    print("a4 is greatest :", a4)
