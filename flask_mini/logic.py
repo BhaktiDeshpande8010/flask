@@ -189,3 +189,8 @@ elif(a3 >= a1 and a3 >= a2 and a3 >= a4):
 
 else:
     print("a4 is greatest :", a4)
+    
+
+p1 = "make a lot of money "
+p2 = "buy a Iphone"
+p3 = "subsribe now"
